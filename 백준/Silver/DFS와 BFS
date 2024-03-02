@@ -1,0 +1,66 @@
+//package org.example.DfsBfs;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class Main {
+
+    static int N, M, V; // 정점, 간선, 시작할 정점의 번호
+    static int[][] Gragh;
+    static boolean[] Visited;
+
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+        N = in.nextInt();
+        M = in.nextInt();
+        V = in.nextInt();
+
+        Gragh = new int[N+1][N+1];
+
+        for(int i = 0; i < M; i++) {
+            int u = in.nextInt();
+            int v = in.nextInt();
+            Gragh[u][v] = Gragh[v][u] = 1;
+        }
+
+        Visited = new boolean[N+1];
+        dfs(V);
+
+        System.out.println();
+
+        Visited = new boolean[N+1];
+        bfs(V);
+    }
+
+
+    static void dfs(int node){ //재귀 이용
+
+        Visited[node] = true;
+        System.out.print(node+" ");
+
+        for (int i = 0; i <= N; i++) {
+            if(!Visited[i] && Gragh[node][i] == 1)
+                dfs(i);
+        }
+    }
+    static void bfs(int node){ //큐 이용
+
+        Queue<Integer> myqueue = new LinkedList<>();
+        Visited[node] = true;
+        myqueue.add(node);
+
+        while (!myqueue.isEmpty()){
+            int curr = myqueue.remove();
+            System.out.print(curr+" ");
+
+            for (int i = 0; i <= N; i++) {
+                if(!Visited[i] && Gragh[curr][i] == 1) {
+                    Visited[i] = true;
+                    myqueue.add(i);
+                }
+            }
+        }
+    }
+}
