@@ -1,0 +1,48 @@
+package org.example.DfsBfs;
+
+import java.util.Scanner;
+
+public class Jelly {
+
+    static int N;
+    static int[][] arr;
+    static boolean[][] visited; //방문 여부
+    static int[] dx = {0, 1}; //오른쪽 이동
+    static int[] dy = {1, 0}; //아래로 이동
+
+    public static void main(String[] args) {
+
+        Scanner in = new Scanner(System.in);
+
+        N = in.nextInt();
+        arr = new int[N][N];
+        visited = new boolean[N][N];
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                arr[i][j] = in.nextInt();
+            }
+        }
+
+        dfs(0, 0);
+
+        System.out.println("Hing"); //dfs 탐색이 끝나도 -1에 도달하지 못하면 "Hing" 출력
+    }
+
+    private static void dfs(int i, int j) {
+        if (arr[i][j] == -1) { //-1이 쓰여 있으면(도착 지점에 도달 했으면)
+            System.out.println("HaruHaru");
+            System.exit(0);
+        }
+
+        for (int k = 0; k < 2; k++) { //오른쪽,아래 두 가지로 이동할 수 있으므로
+            int x = i + dx[k] * arr[i][j], y = j + dy[k] * arr[i][j]; //새로운 x,y 좌표 생성
+            if (x >= N || y >= N || visited[x][y]) //새로운 만든 좌표가 범위를 벗어나면 continue
+                continue;
+
+            visited[x][y] = true; //아니면 방문 여부를 true로 바꾸고 dfs 호출.
+            dfs(x, y);
+        }
+    }
+}
+
