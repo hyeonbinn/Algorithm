@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Main {
 
-    //1을 만나면 상하좌우 탐색. 또 1을 만나면 count수 증가하지 않기.
     static int T;
     static int M,N,K;
     static int[][] Graph;
@@ -24,7 +23,7 @@ public class Main {
                 continue;
             if(Visited[nr][nc]) //방문했으면 continue
                 continue;
-            if(Graph[nr][nc] != 1) //1이면 continue
+            if(Graph[nr][nc] != 1) //1이 아니면 continue
                 continue;
 
             dfs(nr,nc);
