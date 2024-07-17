@@ -16,7 +16,7 @@ class Solution {
             answer += num[i];
         }
 
-        if(answer.charAt(0) == '0') { //모두 0인 경우 0 return
+        if(answer.charAt(0) == '0') { 
             return "0";
         }
 
