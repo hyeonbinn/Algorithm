@@ -17,9 +17,7 @@ class Solution {
                 if (innerWidth * innerHeight == yellow) {
                     if (width >= height) { // 가로는 세로보다 크거나 같아야함 (문제 조건)
                         return new int[]{width, height};
-                    } else {
-                        return new int[]{height, width};
-                    }
+                    } 
                 }
             }
         }
