@@ -1,5 +1,4 @@
 
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,17 +15,10 @@ public class Main {
         }
 
         Arrays.sort(members, (a, b) -> {
-            int ageA = Integer.parseInt(a[0]);
-            int ageB = Integer.parseInt(b[0]);
-
-            if (ageA > ageB) {
-                return 1;  
-            } else if (ageA < ageB) {
-                return -1;
-            } else {
-                return 0;  // 나이 같으면 순서 유지
-            }
+            int ageSorting = Integer.parseInt(a[0]) - Integer.parseInt(b[0]);
+            return ageSorting;
         });
+
 
         for(int i = 0; i < N; i++) {
             System.out.println(members[i][0] + " " + members[i][1]);
